@@ -15,7 +15,7 @@ import static org.junit.Assert.assertThat;
 public class UserRepositoryTest extends AbstractRepositoryTest<User> {
 
     @Autowired
-    UserRepository userRepository;
+    IRepository<User> userRepository;
 
     @Override
     User createEntity() {
@@ -26,7 +26,7 @@ public class UserRepositoryTest extends AbstractRepositoryTest<User> {
     public void get() {
         User user = createEntity();
         userRepository.save(user);
-        User user2 = userRepository.getAll().get(0);
+        User user2 = userRepository.get(user.getId());
         assertThat(user.getId(), equalTo(user2.getId()));
     }
 
