@@ -1,5 +1,6 @@
 package com.example.shop.repository;
 
+import com.example.shop.entity.Identifable;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,7 +15,7 @@ import static org.junit.Assert.assertThat;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
-public abstract class AbstractRepositoryTest<Entity> {
+public abstract class AbstractRepositoryTest<Entity extends Identifable> {
 
     @Autowired
     private IRepository<Entity> repository;
@@ -56,6 +57,27 @@ public abstract class AbstractRepositoryTest<Entity> {
         repository.deleteAll();
         List<Entity> all = repository.getAll();
 
+        assertThat(all.size(), equalTo(0));
+    }
+
+    @Test
+    public void delete() {
+        abstractEntity = createEntity();
+        repository.save(abstractEntity);
+        Entity entity = repository.getAll().get(0);
+        repository.delete(entity);
+
+        List<Entity> all = repository.getAll();
+        assertThat(all.size(), equalTo(0));
+    }
+
+    @Test
+    public void deleteById() {
+        abstractEntity = createEntity();
+        repository.save(abstractEntity);
+        repository.deleteById(abstractEntity.getId());
+
+        List<Entity> all = repository.getAll();
         assertThat(all.size(), equalTo(0));
     }
 }

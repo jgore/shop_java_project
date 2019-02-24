@@ -1,19 +1,14 @@
 package com.example.shop.repository;
 
 import com.example.shop.entity.User;
-import org.hamcrest.CoreMatchers;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import sun.nio.cs.US_ASCII;
 
-import java.util.List;
-
-import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.junit.Assert.assertThat;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
@@ -45,26 +40,5 @@ public class UserRepositoryTest extends AbstractRepositoryTest<User> {
         User update = userRepository.update(user);
 
         assertThat(user, equalTo(update));
-    }
-
-    @Test
-    public void delete() {
-        User user = createEntity();
-        userRepository.save(user);
-        User user1 = userRepository.getAll().get(0);
-        userRepository.delete(user1);
-
-        List<User> all = userRepository.getAll();
-        assertThat(all.size(), equalTo(0));
-    }
-
-    @Test
-    public void deleteById() {
-        User user = createEntity();
-        userRepository.save(user);
-        userRepository.deleteById(user.getId());
-
-        List<User> all = userRepository.getAll();
-        assertThat(all.size(), equalTo(0));
     }
 }
