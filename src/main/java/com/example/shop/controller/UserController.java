@@ -1,9 +1,8 @@
 package com.example.shop.controller;
 
 import com.example.shop.entity.User;
-import com.example.shop.service.IService;
+import com.example.shop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,11 +16,11 @@ import static org.springframework.web.bind.annotation.RequestMethod.*;
 @RequestMapping(value = "/user")
 public class UserController implements IController<User> {
 
-    private IService<User> service;
+    private UserService service;
 
     @Autowired
-    public UserController(@Qualifier(value = "userService") IService<User> service) {
-        this.service = service;
+    public UserController(UserService userService) {
+        this.service = userService;
     }
 
     @Override

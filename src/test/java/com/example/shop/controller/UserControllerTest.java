@@ -1,14 +1,14 @@
 package com.example.shop.controller;
 
 import com.example.shop.ShopApplication;
+import com.example.shop.entity.User;
+import com.example.shop.service.IService;
 import com.example.shop.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -66,7 +66,7 @@ public class UserControllerTest {
 
     @Test
     public void getAllUsers() throws Exception {
-        mockMvc.perform(get("/users/getAll")
+        mockMvc.perform(get("/user/getAll")
                 .contentType(APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk());
