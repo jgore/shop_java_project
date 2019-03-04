@@ -20,7 +20,6 @@ public class UserRepositoryTest extends AbstractRepositoryTest<User> {
     private IRepository<User> repository;
 
 
-
     @Test
     public void get() {
         User user = createEntity();
