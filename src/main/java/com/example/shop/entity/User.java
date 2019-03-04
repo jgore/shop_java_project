@@ -11,7 +11,7 @@ import java.util.Objects;
 import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity
-@Table(name = "user_table")
+@Table(name = "USER_TABLE")
 public class User implements Identifable<User> {
 
     @Id
