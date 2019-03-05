@@ -19,31 +19,31 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public Account get(Long id) {
-        return null;
+        return accountRepository.get(id);
     }
 
     @Override
     public List<Account> getAll() {
-        return null;
+        return accountRepository.getAll();
     }
 
     @Override
     public Account save(Account account) {
-        return null;
+        return accountRepository.save(account);
     }
 
     @Override
     public Account update(Account account) {
-        return null;
+        return accountRepository.update(account);
     }
 
     @Override
     public Account delete(Account account) {
-        return null;
+        return accountRepository.delete(account);
     }
 
     @Override
     public void deleteAll() {
-
+        accountRepository.deleteAll();
     }
 }
