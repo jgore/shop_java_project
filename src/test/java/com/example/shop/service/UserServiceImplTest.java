@@ -1,5 +1,6 @@
 package com.example.shop.service;
 
+import com.example.shop.dto.UserDto;
 import com.example.shop.entity.User;
 import com.example.shop.repository.IRepository;
 import org.junit.After;
@@ -7,12 +8,15 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.mockito.Mockito.*;
 
 @RunWith(SpringRunner.class)
-public class UserServiceTest {
+@SpringBootTest
+public class UserServiceImplTest {
 
     private static final Long VALID_ID = 1L;
 
@@ -20,7 +24,7 @@ public class UserServiceTest {
     private IRepository<User> repository;
 
     @InjectMocks
-    private UserService service;
+    private UserServiceImpl service;
 
     @After
     public void tearDown() {
@@ -36,8 +40,8 @@ public class UserServiceTest {
 
     @Test
     public void save() {
-        User user = createUser();
-        service.save(user);
+        UserDto dto = createUser();
+        service.save(dto);
 
         verify(repository, times(1)).save(any());
     }
@@ -50,15 +54,15 @@ public class UserServiceTest {
 
     @Test
     public void update() {
-        User user = createUser();
-        service.update(user);
+        UserDto dto = createUser();
+        service.update(dto);
         verify(repository, times(1)).update(any());
     }
 
     @Test
     public void delete() {
-        User user = createUser();
-        service.delete(user);
+        UserDto dto = createUser();
+        service.delete(dto);
 
         verify(repository, times(1)).delete(any());
     }
@@ -70,8 +74,8 @@ public class UserServiceTest {
         verify(repository, times(1)).deleteAll();
     }
 
-    private User createUser() {
-        return new User();
+    private UserDto createUser() {
+        return new UserDto();
     }
 
 

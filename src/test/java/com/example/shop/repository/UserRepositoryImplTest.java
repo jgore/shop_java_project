@@ -13,10 +13,10 @@ import static org.junit.Assert.assertThat;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
-public class UserRepositoryTest extends AbstractRepositoryTest<User> {
+public class UserRepositoryImplTest extends AbstractRepositoryTest<User> {
 
     @Autowired
-    @Qualifier(value = "userRepository")
+    @Qualifier(value = "userRepositoryImpl")
     private IRepository<User> repository;
 
 

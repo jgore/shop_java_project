@@ -22,7 +22,7 @@ public class AccountRepositoryTest extends AbstractRepositoryTest<Account> {
     AccountRepository accountRepository;
 
     @Autowired
-    UserRepository userRepository;
+    UserRepositoryImpl userRepositoryImpl;
 
     @After
     public void tearDown() {

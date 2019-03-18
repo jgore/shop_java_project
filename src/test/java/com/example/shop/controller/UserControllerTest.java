@@ -1,9 +1,7 @@
 package com.example.shop.controller;
 
 import com.example.shop.ShopApplication;
-import com.example.shop.entity.User;
-import com.example.shop.service.IService;
-import com.example.shop.service.UserService;
+import com.example.shop.service.UserServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +25,7 @@ public class UserControllerTest {
     MockMvc mockMvc;
 
     @MockBean
-    UserService service;
+    UserServiceImpl service;
 
     @Test
     public void getUser() throws Exception {

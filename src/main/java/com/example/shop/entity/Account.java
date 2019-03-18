@@ -7,8 +7,6 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Objects;
 
-import static javax.persistence.CascadeType.PERSIST;
-import static javax.persistence.CascadeType.REMOVE;
 import static javax.persistence.FetchType.LAZY;
 import static javax.persistence.GenerationType.SEQUENCE;
 
@@ -20,7 +18,7 @@ public class Account implements Identifable {
     @GeneratedValue(strategy = SEQUENCE)
     private Long id;
 
-    @OneToOne(cascade = {PERSIST, REMOVE},orphanRemoval = true, fetch = LAZY, optional = false)
+    @OneToOne(fetch = LAZY)
     @JoinColumn(name = "user_id", unique = true)
     private User user;
 

@@ -1,5 +1,6 @@
 package com.example.shop.service;
 
+import com.example.shop.dto.AccountDto;
 import com.example.shop.entity.Account;
 import com.example.shop.repository.AccountRepository;
 import org.junit.Test;
@@ -31,24 +32,24 @@ public class AccountServiceTest {
 
     @Test
     public void save() {
-        Account account = createAccount();
-        accountService.save(account);
+        AccountDto dto = createAccount();
+        accountService.save(dto);
 
         verify(accountRepository, times(1)).save(any());
     }
 
     @Test
     public void update() {
-        Account account= createAccount();
-        accountService.update(account);
+        AccountDto dto = createAccount();
+        accountService.update(dto);
 
         verify(accountRepository, times(1)).update(any());
     }
 
     @Test
     public void delete() {
-        Account account = createAccount();
-        accountService.delete(account);
+        AccountDto dto = createAccount();
+        accountService.delete(dto);
 
         verify(accountRepository, times(1)).delete(any());
     }
@@ -60,7 +61,7 @@ public class AccountServiceTest {
         verify(accountRepository, times(1)).deleteAll();
     }
 
-    private Account createAccount() {
-        return new Account();
+    private AccountDto createAccount() {
+        return new AccountDto();
     }
 }

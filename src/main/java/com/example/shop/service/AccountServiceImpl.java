@@ -1,49 +1,22 @@
 package com.example.shop.service;
 
+import com.example.shop.dto.AbstractMapper;
+import com.example.shop.dto.AccountDto;
+import com.example.shop.dto.AccountMapper;
 import com.example.shop.entity.Account;
 import com.example.shop.repository.AccountRepository;
+import com.example.shop.repository.IRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class AccountServiceImpl implements AccountService {
+public class AccountServiceImpl extends AbstractService<Account, AccountDto> implements AccountService {
+    private AccountRepository repository;
+    private AccountMapper accountMapper;
 
-    private AccountRepository accountRepository;
-
-    @Autowired
-    public AccountServiceImpl(AccountRepository accountRepository) {
-        this.accountRepository = accountRepository;
-    }
-
-    @Override
-    public Account get(Long id) {
-        return accountRepository.get(id);
-    }
-
-    @Override
-    public List<Account> getAll() {
-        return accountRepository.getAll();
-    }
-
-    @Override
-    public Account save(Account account) {
-        return accountRepository.save(account);
-    }
-
-    @Override
-    public Account update(Account account) {
-        return accountRepository.update(account);
-    }
-
-    @Override
-    public Account delete(Account account) {
-        return accountRepository.delete(account);
-    }
-
-    @Override
-    public void deleteAll() {
-        accountRepository.deleteAll();
+    public AccountServiceImpl(AccountRepository repository, AccountMapper accountMapper) {
+        super(repository, accountMapper);
     }
 }

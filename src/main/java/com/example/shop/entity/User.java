@@ -8,6 +8,10 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Objects;
 
+import static javax.persistence.CascadeType.ALL;
+import static javax.persistence.CascadeType.PERSIST;
+import static javax.persistence.CascadeType.REMOVE;
+import static javax.persistence.FetchType.LAZY;
 import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity
@@ -29,6 +33,9 @@ public class User implements Identifable<User> {
     @Column(name = "update_data")
     @UpdateTimestamp
     private Timestamp updateData;
+
+    @OneToOne(cascade = {ALL}, orphanRemoval = true, fetch = LAZY, optional = false, mappedBy = "user")
+    private Account account;
 
     public User() {
     }
@@ -98,6 +105,14 @@ public class User implements Identifable<User> {
                 Objects.equals(password, user.password) &&
                 Objects.equals(createData, user.createData) &&
                 Objects.equals(updateData, user.updateData);
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
     @Override
