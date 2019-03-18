@@ -1,17 +1,19 @@
 package com.example.shop.service;
 
+import com.example.shop.entity.Identifable;
+
 import java.util.List;
 
-public interface IService<E> {
-    E get (Long id);
+public interface IService<E extends Identifable,DTO> {
+    DTO get (Long id);
 
-    List<E> getAll();
+    List<DTO> getAll();
 
-    E save(E e);
+    DTO save(E e);
 
-    E update(E e);
+    DTO update(E e);
 
-    E delete(E e);
+    DTO delete(Long id);
 
     void deleteAll();
 }

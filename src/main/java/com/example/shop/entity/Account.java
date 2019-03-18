@@ -17,11 +17,10 @@ import static javax.persistence.GenerationType.SEQUENCE;
 public class Account implements Identifable {
 
     @Id
-    @GeneratedValue(strategy = SEQUENCE)
+    @GeneratedValue
     private Long id;
 
-    @OneToOne(cascade = {PERSIST, REMOVE},orphanRemoval = true, fetch = LAZY, optional = false)
-    @JoinColumn(name = "user_id", unique = true)
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "account")
     private User user;
 
     @CreationTimestamp

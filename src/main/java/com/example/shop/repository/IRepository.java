@@ -11,7 +11,7 @@ public interface IRepository<E> {
 
     E update(E e);
 
-    E delete(E e);
+    E delete(Long id);
 
     void deleteAll();
 

@@ -12,15 +12,22 @@ import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity
 @Table(name = "USER_TABLE")
-public class User implements Identifable<User> {
+public class User implements Identifable{
 
     @Id
-    @GeneratedValue(strategy = SEQUENCE)
+    @GeneratedValue
     private Long id;
 
+    @Column(unique = true)
     private String login;
+    @Column(unique = true)
     private String email;
+    @Column
     private String password;
+
+    @OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "account_id", nullable = false)
+    private Account account;
 
     @Column(name = "create_data", updatable = false)
     @CreationTimestamp
@@ -85,6 +92,14 @@ public class User implements Identifable<User> {
 
     public void setUpdateData(Timestamp updateData) {
         this.updateData = updateData;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
     @Override

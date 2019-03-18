@@ -1,6 +1,7 @@
 package com.example.shop.repository;
 
 import com.example.shop.entity.Identifable;
+import com.example.shop.entity.User;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,6 +30,8 @@ public abstract class AbstractRepositoryTest<E extends Identifable> {
         repository.deleteAll();
     }
 
+    public abstract void update();
+
     @Test
     public void create() {
         abstractEntiti = createEntity();
@@ -37,6 +40,15 @@ public abstract class AbstractRepositoryTest<E extends Identifable> {
 
         assertThat(all.size(), equalTo(1));
     }
+
+    @Test
+    public void get() {
+        E e = createEntity();
+        repository.save(e);
+        E ePersisted = repository.get(e.getId());
+        assertThat(ePersisted.getId(), equalTo(ePersisted.getId()));
+    }
+
 
     @Test
     public void getAll() {
@@ -64,7 +76,7 @@ public abstract class AbstractRepositoryTest<E extends Identifable> {
         abstractEntiti = createEntity();
         repository.save(abstractEntiti);
         E entity = repository.getAll().get(0);
-        repository.delete(entity);
+        repository.delete(entity.getId());
 
         List<E> all = repository.getAll();
         assertThat(all.size(), equalTo(0));

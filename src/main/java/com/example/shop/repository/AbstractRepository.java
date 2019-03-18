@@ -49,8 +49,9 @@ public class AbstractRepository<E extends Identifable> implements IRepository<E>
 
     @Override
     @Transactional
-    public E delete(E e) {
-        em.remove(em.contains(e) ? e : em.merge(e));
+    public E delete(Long id) {
+        E e = get(id);
+        em.remove(e);
         return e;
     }
 

@@ -1,5 +1,6 @@
 package com.example.shop.repository;
 
+import com.example.shop.entity.Account;
 import com.example.shop.entity.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,18 +16,6 @@ import static org.junit.Assert.assertThat;
 @RunWith(SpringRunner.class)
 public class UserRepositoryTest extends AbstractRepositoryTest<User> {
 
-    @Autowired
-    @Qualifier(value = "userRepository")
-    private IRepository<User> repository;
-
-
-    @Test
-    public void get() {
-        User user = createEntity();
-        repository.save(user);
-        User user2 = repository.get(user.getId());
-        assertThat(user.getId(), equalTo(user2.getId()));
-    }
 
     @Test
     public void update() {
@@ -41,7 +30,11 @@ public class UserRepositoryTest extends AbstractRepositoryTest<User> {
     }
 
     @Override
-    User createEntity() {
-        return new User();
+    protected User createEntity() {
+        User user = new User();
+        user.setLogin("test1234"+Math.random());
+        user.setEmail("testEmail"+Math.random());
+        user.setAccount( new Account());
+        return user;
     }
 }

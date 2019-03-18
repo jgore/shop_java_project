@@ -1,7 +1,7 @@
 package com.example.shop.controller;
 
 import com.example.shop.ShopApplication;
-import com.example.shop.service.UserServiceImpl;
+import com.example.shop.service.ProductServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,31 +13,32 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(UserController.class)
+@WebMvcTest(ProductController.class)
 @ContextConfiguration(classes = ShopApplication.class)
-public class UserControllerTest {
+public class ProductControllerTest {
 
     @Autowired
-    MockMvc mockMvc;
+    private MockMvc mockMvc;
 
     @MockBean
-    UserServiceImpl service;
+    private ProductServiceImpl service;
 
     @Test
-    public void getUser() throws Exception {
-        mockMvc.perform(get("/user/1")
+    public void getProduct() throws Exception {
+        mockMvc.perform(get("/product/1")
                 .contentType(APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk());
     }
 
     @Test
-    public void saveUser() throws Exception {
-        mockMvc.perform(post("/user/").contentType(APPLICATION_JSON)
+    public void saveProduct() throws Exception {
+        mockMvc.perform(post("/product/").contentType(APPLICATION_JSON)
                 .content("{}"))
                 .andDo(print())
                 .andExpect(status().isOk());
@@ -45,8 +46,8 @@ public class UserControllerTest {
     }
 
     @Test
-    public void deleteUser() throws Exception {
-        mockMvc.perform(delete("/user/1")
+    public void deleteProduct() throws Exception {
+        mockMvc.perform(delete("/product/1")
                 .contentType(APPLICATION_JSON)
                 .content("{}"))
                 .andDo(print())
@@ -54,8 +55,8 @@ public class UserControllerTest {
     }
 
     @Test
-    public void updateUser() throws Exception {
-        mockMvc.perform(put("/user")
+    public void updateProduct() throws Exception {
+        mockMvc.perform(put("/product")
                 .contentType(APPLICATION_JSON)
                 .content("{}"))
                 .andDo(print())
@@ -63,12 +64,10 @@ public class UserControllerTest {
     }
 
     @Test
-    public void getAllUsers() throws Exception {
-        mockMvc.perform(get("/user")
+    public void getAllProducts() throws Exception {
+        mockMvc.perform(get("/product")
                 .contentType(APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk());
     }
 }
-
-
