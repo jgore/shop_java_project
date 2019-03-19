@@ -1,6 +1,8 @@
 package com.example.shop.service;
 
 import com.example.shop.dto.AccountDto;
+import com.example.shop.dto.AccountMapper;
+import com.example.shop.dto.UserMapper;
 import com.example.shop.entity.Account;
 import com.example.shop.repository.AccountRepository;
 import org.junit.Test;
@@ -19,6 +21,12 @@ public class AccountServiceTest {
 
     @Mock
     private AccountRepository accountRepository;
+
+    @Mock
+    AccountMapper accountMapper;
+
+    @Mock
+    UserMapper userMapper;
 
     @InjectMocks
     private AccountServiceImpl accountService;
