@@ -2,16 +2,16 @@ package com.example.shop.service;
 
 import java.util.List;
 
-public interface IService<E> {
-    E get (Long id);
+public interface IService<E, D> {
+    D get (Long id);
 
-    List<E> getAll();
+    List<D> getAll();
 
-    E save(E e);
+    E save(D d);
 
-    E update(E e);
+    E update(D d);
 
-    E delete(E e);
+    E delete(D d);
 
     void deleteAll();
 }
