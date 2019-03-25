@@ -9,7 +9,8 @@ import java.util.List;
 
 import static org.springframework.web.bind.annotation.RequestMethod.*;
 
-@RestController(value = "/product")
+@RestController
+@RequestMapping(value = "/product")
 public class ProductController implements IController<ProductDto> {
 
     private ProductService service;

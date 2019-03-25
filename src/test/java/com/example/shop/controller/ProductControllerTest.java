@@ -64,7 +64,7 @@ public class ProductControllerTest {
 
     @Test
     public void getAllProducts() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.get("/products/getAll")
+        mvc.perform(MockMvcRequestBuilders.get("/product/getAll")
         .contentType(MediaType.APPLICATION_JSON))
         .andDo(MockMvcResultHandlers.print())
         .andExpect(MockMvcResultMatchers.status().isOk());
