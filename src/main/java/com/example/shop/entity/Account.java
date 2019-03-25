@@ -5,6 +5,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.List;
 import java.util.Objects;
 
 import static javax.persistence.FetchType.LAZY;
@@ -29,6 +30,9 @@ public class Account implements Identifable {
     @UpdateTimestamp
     @Column(name = "UPDATE_DATA", updatable = true)
     private Timestamp updateData;
+
+    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Order> orders;
 
     public Account() {
     }

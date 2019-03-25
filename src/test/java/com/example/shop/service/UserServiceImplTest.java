@@ -1,14 +1,15 @@
 package com.example.shop.service;
 
 import com.example.shop.dto.UserDto;
+import com.example.shop.dto.UserMapper;
 import com.example.shop.entity.User;
 import com.example.shop.repository.IRepository;
+import com.example.shop.repository.UserRepository;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -21,7 +22,10 @@ public class UserServiceImplTest {
     private static final Long VALID_ID = 1L;
 
     @Mock
-    private IRepository<User> repository;
+    private UserRepository repository;
+
+    @Mock
+    UserMapper userMapper;
 
     @InjectMocks
     private UserServiceImpl service;

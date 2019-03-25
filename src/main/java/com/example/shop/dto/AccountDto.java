@@ -1,7 +1,5 @@
 package com.example.shop.dto;
 
-import java.util.Objects;
-
 public class AccountDto {
     private Long id;
 

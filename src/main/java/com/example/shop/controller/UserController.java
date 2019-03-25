@@ -28,30 +28,33 @@ public class UserController implements IController<UserDto> {
     @Override
     @RequestMapping(value = "/{id}",method = GET)
     public UserDto get(@PathVariable("id") Long id) {
-        return null;
+        return service.get(id);
     }
 
     @Override
     @RequestMapping(value = "/getAll", method = GET)
     public List<UserDto> getAll() {
-        return null;
+        return service.getAll();
     }
 
     @Override
     @RequestMapping(method = POST)
     public UserDto save(@RequestBody UserDto dto) {
-        return null;
+        service.save(dto);
+        return dto;
     }
 
     @Override
     @RequestMapping(method = PUT)
     public UserDto update(@RequestBody UserDto user) {
-        return null;
+        service.update(user);
+        return user;
     }
 
     @Override
     @RequestMapping(method = DELETE)
     public UserDto delete(@RequestBody UserDto user) {
-        return null;
+        service.delete(user);
+        return user;
     }
 }

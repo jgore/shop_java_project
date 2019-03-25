@@ -2,15 +2,15 @@ package com.example.shop.controller;
 
 import java.util.List;
 
-public interface IController<E> {
-    E get (Long id);
+public interface IController<D> {
+    D get (Long id);
 
-    List<E> getAll();
+    List<D> getAll();
 
-    E save(E e);
+    D save(D d);
 
-    E update(E e);
+    D update(D d);
 
-    E delete(E e);
+    D delete(D d);
 
 }
