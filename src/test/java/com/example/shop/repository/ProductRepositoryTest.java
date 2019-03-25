@@ -29,18 +29,17 @@ public class ProductRepositoryTest extends AbstractRepositoryTest<Product> {
     }
 
     @Test
-    @Ignore
-    //FIXME
     public void update() {
         Product product = createEntity();
         repository.save(product);
+
         Product product1 = repository.getAll().get(0);
-
         product1.setName("Test");
-        repository.update(product);
+        repository.update(product1);
 
-        assertThat(product, equalTo(product1));
+        Product product2 = repository.getAll().get(0);
 
+        assertThat(product2.getName(), equalTo(product1.getName()));
     }
 
     @Override

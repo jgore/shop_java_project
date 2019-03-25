@@ -30,16 +30,17 @@ public class UserRepositoryImplTest extends AbstractRepositoryTest<User> {
     }
 
     @Test
-    @Ignore
     public void update() {
         User user = createEntity();
         repository.save(user);
+
         User user1 = repository.getAll().get(0);
-
         user1.setLogin("Test");
-        User update = repository.update(user);
+        repository.update(user1);
 
-        assertThat(user, equalTo(update));
+        User user2 = repository.getAll().get(0);
+
+        assertThat(user1.getLogin(), equalTo(user2.getLogin()));
     }
 
     @Override
