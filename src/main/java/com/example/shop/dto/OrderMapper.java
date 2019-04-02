@@ -28,6 +28,15 @@ public class OrderMapper implements AbstractMapper<Order, OrderDto> {
 
     @Override
     public OrderDto entityToDto(Order order) {
-        return null;
+        if (order == null) {
+            return null;
+        }
+
+        OrderDto dto = new OrderDto();
+        dto.setId(order.getId());
+        dto.setOrderLineItemDtos(order.getOrderLineItemList().stream()
+                .map(e -> orderLineItemMapper.entityToDto(e))
+                .collect(Collectors.toList()));
+        return dto;
     }
 }
