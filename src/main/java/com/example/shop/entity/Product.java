@@ -7,9 +7,12 @@ import javax.persistence.*;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.List;
 import java.util.Objects;
 
+import static javax.persistence.CascadeType.*;
 import static javax.persistence.EnumType.STRING;
+import static javax.persistence.FetchType.LAZY;
 import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity
@@ -25,6 +28,7 @@ public class Product implements Identifable {
     private String name;
     private BigDecimal price;
     private int quantity;
+
 
     @CreationTimestamp
     @Column(name = "create_data", updatable = false)

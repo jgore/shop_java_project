@@ -31,8 +31,7 @@ public class Account implements Identifable {
     @Column(name = "UPDATE_DATA", updatable = true)
     private Timestamp updateData;
 
-    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Order> orders;
+
 
     public Account() {
     }
