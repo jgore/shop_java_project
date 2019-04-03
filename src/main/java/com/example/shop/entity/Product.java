@@ -12,26 +12,47 @@ import java.util.Objects;
 @Table(name = "PRODUCT_TABLE")
 public class Product implements Identifable {
 
-    @Id
-    @GeneratedValue
     private Long id;
     private String title;
     private String description;
 
     private BigDecimal price;
 
-
-    @Column(name = "create_data", updatable = false)
-    @CreationTimestamp
     private Timestamp createData;
-
-    @Column(name = "update_data")
-    @UpdateTimestamp
     private Timestamp updateData;
 
+    @Id
+    @GeneratedValue
     @Override
     public Long getId() {
         return id;
+    }
+
+
+    public String getTitle() {
+        return title;
+    }
+
+
+    public String getDescription() {
+        return description;
+    }
+
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    @Column(name = "create_data", updatable = false)
+    @CreationTimestamp
+    public Timestamp getCreateData() {
+        return createData;
+    }
+
+    @Column(name = "update_data")
+    @UpdateTimestamp
+    public Timestamp getUpdateData() {
+        return updateData;
     }
 
     @Override
@@ -39,40 +60,20 @@ public class Product implements Identifable {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
     }
 
     public void setDescription(String description) {
         this.description = description;
     }
 
-    public BigDecimal getPrice() {
-        return price;
-    }
-
     public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
-    public Timestamp getCreateData() {
-        return createData;
-    }
-
     public void setCreateData(Timestamp createData) {
         this.createData = createData;
-    }
-
-    public Timestamp getUpdateData() {
-        return updateData;
     }
 
     public void setUpdateData(Timestamp updateData) {

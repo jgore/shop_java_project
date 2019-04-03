@@ -43,7 +43,6 @@ public class UserRepositoryImpl extends AbstractRepository<User> implements User
     public User update(User user) {
 
         User persistedUser = get(user.getId());
-
         user.setAccount(persistedUser.getAccount());
 
         em.merge(user);
