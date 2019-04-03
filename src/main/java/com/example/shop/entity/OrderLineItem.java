@@ -18,6 +18,10 @@ public class OrderLineItem {
     @JoinColumn(name = "order_id", nullable = false)
     private Order order;
 
+    @ManyToOne
+    @JoinColumn(name = "product_id", nullable = false)
+    private Product product;
+
     public Long getId() {
         return id;
     }
