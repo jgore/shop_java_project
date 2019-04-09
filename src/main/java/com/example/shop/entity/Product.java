@@ -6,12 +6,9 @@ import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
-import java.util.List;
 import java.util.Objects;
 
-import static javax.persistence.CascadeType.*;
 import static javax.persistence.EnumType.STRING;
-import static javax.persistence.FetchType.*;
 import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity
@@ -36,9 +33,6 @@ public class Product implements Identifable {
     @UpdateTimestamp
     @Column(name = "update_data")
     private Timestamp updateData;
-
-    @OneToMany(mappedBy = "product", fetch = LAZY, cascade = {PERSIST, MERGE, REFRESH})
-    private List<OrderLineItem> orderLineItemList;
 
     public Product() {}
 

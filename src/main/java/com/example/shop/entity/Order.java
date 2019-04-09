@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Objects;
 
 import static javax.persistence.CascadeType.ALL;
-import static javax.persistence.FetchType.LAZY;
+import static javax.persistence.FetchType.EAGER;
 import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity
@@ -27,7 +27,7 @@ public class Order implements Identifable {
     @Column(name = "update_data")
     private Timestamp updateData;
 
-    @OneToMany(mappedBy = "order", fetch = LAZY, cascade = ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "order", fetch = EAGER, cascade = ALL, orphanRemoval = true)
     private List<OrderLineItem> orderLineItemList;
 
 
