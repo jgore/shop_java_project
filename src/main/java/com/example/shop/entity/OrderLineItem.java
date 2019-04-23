@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 import static javax.persistence.CascadeType.ALL;
-import static javax.persistence.FetchType.LAZY;
+import static javax.persistence.FetchType.EAGER;
 import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity
@@ -19,11 +19,11 @@ public class OrderLineItem {
 
     private int amount;
 
-    @ManyToOne(cascade = ALL, fetch = LAZY)
+    @ManyToOne(cascade = ALL, fetch = EAGER)
     @JoinColumn(name = "order_id", nullable = false)
     private Order order;
 
-    @ManyToOne(fetch = LAZY)
+    @ManyToOne(fetch = EAGER)
     @JoinColumn(name = "product_id")
     private Product product;
 

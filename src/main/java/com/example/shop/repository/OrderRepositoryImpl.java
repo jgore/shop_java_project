@@ -2,6 +2,7 @@ package com.example.shop.repository;
 
 import com.example.shop.entity.Order;
 import com.example.shop.entity.OrderLineItem;
+import com.example.shop.entity.OrderStatus;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
@@ -21,5 +22,12 @@ public class OrderRepositoryImpl extends AbstractRepository<Order> implements Or
         order.setOrderLineItemList(Arrays.asList(orderLineItem));
         orderLineItem.setOrder(order);
        return super.save(order);
+    }
+
+    @Override
+    @Transactional
+    public Order delete(Order order) {
+        order.setStatus(OrderStatus.DELETED);
+        return super.update(order);
     }
 }

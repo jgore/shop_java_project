@@ -2,6 +2,7 @@ package com.example.shop.repository;
 
 import com.example.shop.entity.Order;
 import com.example.shop.entity.OrderLineItem;
+import com.example.shop.entity.OrderStatus;
 import org.junit.After;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -10,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.List;
 
 import static java.util.Arrays.asList;
@@ -70,6 +73,19 @@ public class OrderRepositoryTest extends AbstractRepositoryTest<Order> {
         Order update = repository.update(order1);
 
         assertNotEquals(update.getCreateData(), update.getUpdateData());
+    }
+
+    @Override
+    @Test
+    public void delete() {
+        Order order = createEntity();
+        OrderLineItem orderLineItem = new OrderLineItem();
+        order.setOrderLineItemList(Arrays.asList(orderLineItem));
+
+        Order savedOrder = repository.save(order);
+
+            Order deletedOrder = repository.delete(savedOrder);
+        assertThat(deletedOrder.getStatus(), equalTo(OrderStatus.DELETED));
     }
 
     @Override

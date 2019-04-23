@@ -30,6 +30,9 @@ public class Order implements Identifable {
     @OneToMany(mappedBy = "order", fetch = EAGER, cascade = ALL, orphanRemoval = true)
     private List<OrderLineItem> orderLineItemList;
 
+    @Enumerated(EnumType.STRING)
+    private OrderStatus status;
+
 
     public Order() {}
 
@@ -63,6 +66,14 @@ public class Order implements Identifable {
 
     public void setOrderLineItemList(List<OrderLineItem> orderLineItemList) {
         this.orderLineItemList = orderLineItemList;
+    }
+
+    public OrderStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(OrderStatus status) {
+        this.status = status;
     }
 
     @Override
