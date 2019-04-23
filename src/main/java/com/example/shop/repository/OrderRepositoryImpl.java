@@ -17,15 +17,6 @@ public class OrderRepositoryImpl extends AbstractRepository<Order> implements Or
 
     @Override
     @Transactional
-    public Order save(Order order) {
-        OrderLineItem orderLineItem = new OrderLineItem();
-        order.setOrderLineItemList(Arrays.asList(orderLineItem));
-        orderLineItem.setOrder(order);
-       return super.save(order);
-    }
-
-    @Override
-    @Transactional
     public Order delete(Order order) {
         order.setStatus(OrderStatus.DELETED);
         return super.update(order);
