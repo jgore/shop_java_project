@@ -53,6 +53,7 @@ public class OrderIT {
 
         order.setOrderLineItems(Arrays.asList(orderLineItem, orderLineItem1));
 
-        orderRepository.save(order);
+        Order save = orderRepository.save(order);
+        save.toString();
     }
 }
