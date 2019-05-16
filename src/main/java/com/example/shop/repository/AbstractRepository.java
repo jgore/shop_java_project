@@ -28,7 +28,8 @@ public class AbstractRepository<E extends Identifable> implements IRepository<E>
 
     @Override
     public List<E> getAll() {
-        return em.createQuery("from " + clazz.getSimpleName() + " order by create_data desc").getResultList();
+        return em.createQuery("from " + clazz.getSimpleName() + " order by create_data desc")
+                .getResultList();
     }
 
     @Override

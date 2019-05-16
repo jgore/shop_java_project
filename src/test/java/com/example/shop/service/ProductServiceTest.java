@@ -49,8 +49,8 @@ public class ProductServiceTest {
 
     @Test
     public void save() {
-        Product Product = createProduct();
-        productService.save(Product);
+        ProductDto dto = new ProductDto();
+        productService.save(dto);
 
         verify(repository, times(1)).save(any());
     }
@@ -63,8 +63,8 @@ public class ProductServiceTest {
 
     @Test
     public void update() {
-        Product Product = createProduct();
-        productService.update(Product);
+        ProductDto dto = new ProductDto();
+        productService.update(dto);
         verify(repository, times(1)).update(any());
     }
 

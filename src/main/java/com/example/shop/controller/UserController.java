@@ -35,14 +35,14 @@ public class UserController implements IController<User,UserDto> {
 
     @Override
     @RequestMapping(method = POST)
-    public UserDto save(@RequestBody User user) {
-            return service.save(user);
+    public UserDto save(@RequestBody UserDto userDto) {
+            return service.save(userDto);
     }
 
     @Override
     @RequestMapping(method = PUT)
-    public UserDto update(@RequestBody User user) {
-        return service.update(user);
+    public UserDto update(@RequestBody UserDto userDto) {
+        return service.update(userDto);
     }
 
     @Override

@@ -38,14 +38,14 @@ public class ProductController implements IController<Product, ProductDto> {
 
     @Override
     @RequestMapping(method = POST)
-    public ProductDto save(@RequestBody Product Product) {
-        return service.save(Product);
+    public ProductDto save(@RequestBody ProductDto productDto) {
+        return service.save(productDto);
     }
 
     @Override
     @RequestMapping(method = PUT)
-    public ProductDto update(@RequestBody Product Product) {
-        return service.update(Product);
+    public ProductDto update(@RequestBody ProductDto productDto) {
+        return service.update(productDto);
     }
 
     @Override

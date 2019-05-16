@@ -40,13 +40,14 @@ public abstract class AbstractService<E extends Identifable, DTO> implements ISe
     }
 
     @Override
-    public DTO save(E e) {
-        return mapper.map(repository.save(e));
+    public DTO save(DTO dto) {
+
+        return mapper.map(repository.save( mapper.map(dto)));
     }
 
     @Override
-    public DTO update(E e) {
-        return mapper.map(repository.update(e));
+    public DTO update(DTO dto) {
+        return mapper.map(repository.update(mapper.map(dto)));
     }
 
     @Override

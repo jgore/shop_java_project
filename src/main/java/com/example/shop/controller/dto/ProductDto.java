@@ -1,13 +1,17 @@
 package com.example.shop.controller.dto;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 public class ProductDto {
 
     private Long id;
+    @NotEmpty
     private String title;
+    @NotEmpty
     private String description;
-
+    @NotEmpty
     private BigDecimal price;
 
     public Long getId() {

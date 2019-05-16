@@ -6,7 +6,6 @@ import com.example.shop.entity.Account;
 import com.example.shop.entity.User;
 import com.example.shop.mapper.AccountMapper;
 import com.example.shop.mapper.UserMapper;
-import com.example.shop.repository.IRepository;
 import com.example.shop.repository.UserRepository;
 import org.junit.After;
 import org.junit.Before;
@@ -41,7 +40,7 @@ public class UserServiceImplTest {
         when(userMapper.map(any(UserDto.class))).thenReturn(new User());
         when(accountMapper.map(any(Account.class))).thenReturn(new AccountDto());
         when(accountMapper.map(any(AccountDto.class))).thenReturn(new Account());
-        when(repository.get(anyLong())).thenReturn( new User());
+        when(repository.get(anyLong())).thenReturn(new User());
     }
 
     @After
@@ -58,8 +57,8 @@ public class UserServiceImplTest {
 
     @Test
     public void save() {
-        User user = createUser();
-        userService.save(user);
+        UserDto dto = new UserDto();
+        userService.save(dto);
 
         verify(repository, times(1)).save(any());
     }
@@ -72,8 +71,8 @@ public class UserServiceImplTest {
 
     @Test
     public void update() {
-        User user = createUser();
-        userService.update(user);
+        UserDto dto = new UserDto();
+        userService.update(dto);
         verify(repository, times(1)).update(any());
     }
 

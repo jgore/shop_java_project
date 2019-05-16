@@ -23,7 +23,6 @@ public class OrderRestController {
 
     @RequestMapping( method = GET)
     public List<OrderDto> getAll() {
-        List<OrderDto> all = service.getAll();
-        return all;
+        return service.getAll();
     }
 }
