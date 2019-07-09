@@ -22,18 +22,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class UserControllerTest {
 
     @Autowired
-    MockMvc mockMvc;
+    private MockMvc mockMvc;
 
     @MockBean
-    UserServiceImpl service;
+    private UserServiceImpl service;
 
-    @Test
-    public void getUser() throws Exception {
-        mockMvc.perform(get("/user/1")
-                .contentType(APPLICATION_JSON))
-                .andDo(print())
-                .andExpect(status().isOk());
-    }
 
     @Test
     public void saveUser() throws Exception {
@@ -69,6 +62,7 @@ public class UserControllerTest {
                 .andDo(print())
                 .andExpect(status().isOk());
     }
+
 }
 
 

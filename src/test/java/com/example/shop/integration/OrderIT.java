@@ -13,6 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
+import java.util.stream.Stream;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
@@ -26,32 +27,24 @@ public class OrderIT {
 
     @Test
     public void createOrder() {
+        Stream.of("java00","java0","java1","java1++").forEach(this::saveOrder);
+
+    }
+
+    private void saveOrder(String prouductName) {
         Order order = new Order();
         Product product = new Product();
-        product.setTitle("Korepetycje");
-        product.setPrice(new BigDecimal(35));
-        Product product1 = new Product();
-        product1.setTitle("Support");
-        product1.setPrice(new BigDecimal(35));
+        product.setTitle(prouductName);
+        product.setPrice(new BigDecimal(999));
         Product savedProd = productRepository.save(product);
-        Product savedProd1 = productRepository.save(product1);
-
-        Product product2 = new Product();
-        product2.setTitle("Znizka");
-        product2.setPrice(new BigDecimal(14));
 
         OrderLineItem orderLineItem = new OrderLineItem();
-        OrderLineItem orderLineItem1 = new OrderLineItem();
         orderLineItem.setAmount(4);
 
         orderLineItem.setProduct(savedProd);
         orderLineItem.setOrder(order);
-        orderLineItem1.setAmount(4);
 
-        orderLineItem1.setProduct(savedProd1);
-        orderLineItem1.setOrder(order);
-
-        order.setOrderLineItems(Arrays.asList(orderLineItem, orderLineItem1));
+        order.setOrderLineItems(Arrays.asList(orderLineItem));
 
         Order save = orderRepository.save(order);
         save.toString();

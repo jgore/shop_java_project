@@ -9,7 +9,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository
-public class AbstractRepository<E extends Identifable> implements IRepository<E> {
+public abstract class AbstractRepository<E extends Identifable> implements IRepository<E> {
 
     private Class<E> clazz;
 

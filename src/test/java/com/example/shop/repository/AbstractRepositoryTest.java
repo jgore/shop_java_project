@@ -1,5 +1,6 @@
 package com.example.shop.repository;
 
+import com.example.shop.TestConfig;
 import com.example.shop.entity.Identifable;
 import com.example.shop.entity.User;
 import org.junit.After;
@@ -7,19 +8,26 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.support.AnnotationConfigContextLoader;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 
-@SpringBootTest
-@RunWith(SpringRunner.class)
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(
+        classes = { TestConfig.class },
+        loader = AnnotationConfigContextLoader.class)
+@Transactional
 public abstract class AbstractRepositoryTest<E extends Identifable> {
 
     @Autowired
-    IRepository<E> repository;
+    protected IRepository<E> repository;
 
     private E abstractEntiti;
 
