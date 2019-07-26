@@ -1,14 +1,16 @@
 version: "3"
 services:
-  shop:
-    # replace username/repo:tag with your name and image details
-    image: localhost:5000/shop:latest
-    depends_on:
-      - psql
-    ports:
-      - "8080:8080"
-    networks:
-      - default
+#  shop:
+#    # replace username/repo:tag with your name and image details
+#    image: localhost:5000/shop:latest
+#    depends_on:
+#      - psql
+#    ports:
+#      - "8080:8080"
+#    networks:
+#      - default
+#     environment:
+#       SPRING_PROFILES_ACTIVE: "dev"
 
   pricing-service:
     # replace username/repo:tag with your name and image details
@@ -19,6 +21,8 @@ services:
       - "8081:8081"
     networks:
       - default
+    environment:
+      SPRING_PROFILES_ACTIVE: "dev"
 
   psql:
     image: postgres
